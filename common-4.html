@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Common Exercise 28–36 | NetLab বাংলা</title><link href="style.css" rel="stylesheet"></head><body><div class="wrap"><div class="top"><a class="brand" href="index.html" style="color:inherit;text-decoration:none">NetLab <span>বাংলা</span></a><nav>
+<a href="ip-classes.html">IP Classes A–E</a>
+<a href="theory.html">থিওরি</a><a href="ipv6-mac.html">IPv6 + MAC</a><a href="exercises.html">Exercises</a><a href="practice.html">Practice</a><a href="test.html">Test</a><a href="calculator.html">Subnet Calculator</a>
+</nav></div>
+<section class="hero"><span class="pill">Common Exercise · পেজ 4/5</span><h1>প্র্যাকটিস 28–36</h1><p class="muted">উত্তর লিখে “উত্তর মিলিয়ে দেখো” চাপো। প্রশ্নে একাধিক মান চাইলে সবগুলো লিখবে।</p><div class="pager"><a class="btn" href="common-1.html">পেজ 1</a><a class="btn" href="common-2.html">পেজ 2</a><a class="btn" href="common-3.html">পেজ 3</a><a class="btn" href="common-4.html">পেজ 4</a><a class="btn" href="common-5.html">পেজ 5</a> <a class="btn" href="exercises.html">সব Exercise</a></div></section><section class="card common-question" id="cq28">
+  <span class="pill">Common Exercise 28 / 46</span><h2>একটি বিশ্ববিদ্যালয়ের Admin 100, Science 200, Arts 50 এবং Library 25 host চায়। 10.10.0.0/16 থেকে VLSM-এ বড় subnet আগে দিয়ে প্রতিটি বিভাগের prefix দাও।</h2>
+  <label for="answer28">তোমার উত্তর</label><textarea id="answer28" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="28" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="28" type="button">সমাধান দেখো</button><span class="feedback" id="feedback28" aria-live="polite"></span></div>
+  <details id="solution28" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>Science 200: /24; Admin 100: /25; Arts 50: /26; Library 25: /27; একটি বৈধ non-overlap allocation উদাহরণ: 10.10.0.0/24, 10.10.1.0/25, 10.10.1.128/26, 10.10.1.192/27</p></details>
+  <script type="application/json" class="answer-key" id="key28">["/24", "/25", "/26", "/27", "10.10.0.0", "10.10.1.0", "10.10.1.128", "10.10.1.192"]</script>
+  </section><section class="card common-question" id="cq29">
+  <span class="pill">Common Exercise 29 / 46</span><h2>একটি ক্যাম্পাসের IT 400, Business 180, Law 90, Dormitory 700 host চায়। প্রয়োজনীয় subnet prefixগুলো বের করো।</h2>
+  <label for="answer29">তোমার উত্তর</label><textarea id="answer29" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="29" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="29" type="button">সমাধান দেখো</button><span class="feedback" id="feedback29" aria-live="polite"></span></div>
+  <details id="solution29" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>Dormitory 700: /22; IT 400: /23; Business 180: /24; Law 90: /25</p></details>
+  <script type="application/json" class="answer-key" id="key29">["/22", "/23", "/24", "/25"]</script>
+  </section><section class="card common-question" id="cq30">
+  <span class="pill">Common Exercise 30 / 46</span><h2>একটি প্রতিষ্ঠানে 60, 28, 12 ও 6 host-এর চারটি LAN। VLSM prefixগুলো বড় থেকে ছোট ক্রমে লেখো।</h2>
+  <label for="answer30">তোমার উত্তর</label><textarea id="answer30" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="30" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="30" type="button">সমাধান দেখো</button><span class="feedback" id="feedback30" aria-live="polite"></span></div>
+  <details id="solution30" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>60 → /26; 28 → /27; 12 → /28; 6 → /29</p></details>
+  <script type="application/json" class="answer-key" id="key30">["60", "/26", "28", "/27", "12", "/28", "6", "/29"]</script>
+  </section><section class="card common-question" id="cq31">
+  <span class="pill">Common Exercise 31 / 46</span><h2>192.168.40.0/24 থেকে 3টি বিভাগকে যথাক্রমে 100, 50 ও 20 host দিতে subnet network ও prefix পরিকল্পনা করো।</h2>
+  <label for="answer31">তোমার উত্তর</label><textarea id="answer31" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="31" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="31" type="button">সমাধান দেখো</button><span class="feedback" id="feedback31" aria-live="polite"></span></div>
+  <details id="solution31" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>একটি বৈধ plan: 100 hosts 192.168.40.0/25; 50 hosts 192.168.40.128/26; 20 hosts 192.168.40.192/27</p></details>
+  <script type="application/json" class="answer-key" id="key31">["192.168.40.0/25", "192.168.40.128/26", "192.168.40.192/27"]</script>
+  </section><section class="card common-question" id="cq32">
+  <span class="pill">Common Exercise 32 / 46</span><h2>10.0.0.0/24 থেকে 5টি একই আকারের subnet দরকার। ন্যূনতম সমান subnet সংখ্যা দিতে prefix ও usable host লেখো।</h2>
+  <label for="answer32">তোমার উত্তর</label><textarea id="answer32" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="32" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="32" type="button">সমাধান দেখো</button><span class="feedback" id="feedback32" aria-live="polite"></span></div>
+  <details id="solution32" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>/27 gives 8 equal subnets; 30 usable hosts each</p></details>
+  <script type="application/json" class="answer-key" id="key32">["/27", "8", "30"]</script>
+  </section><section class="card common-question" id="cq33">
+  <span class="pill">Common Exercise 33 / 46</span><h2>একটি IP 192.168.1.255/24—এটি host address হিসেবে ব্যবহারযোগ্য কি? কারণ লেখো।</h2>
+  <label for="answer33">তোমার উত্তর</label><textarea id="answer33" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="33" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="33" type="button">সমাধান দেখো</button><span class="feedback" id="feedback33" aria-live="polite"></span></div>
+  <details id="solution33" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>না; এটি 192.168.1.0/24 subnet-এর broadcast address</p></details>
+  <script type="application/json" class="answer-key" id="key33">["না", "192.168.1.255", "broadcast"]</script>
+  </section><section class="card common-question" id="cq34">
+  <span class="pill">Common Exercise 34 / 46</span><h2>192.168.1.0/24-এ প্রথম ও শেষ usable host address কী?</h2>
+  <label for="answer34">তোমার উত্তর</label><textarea id="answer34" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="34" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="34" type="button">সমাধান দেখো</button><span class="feedback" id="feedback34" aria-live="polite"></span></div>
+  <details id="solution34" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>First 192.168.1.1; last 192.168.1.254</p></details>
+  <script type="application/json" class="answer-key" id="key34">["192.168.1.1", "192.168.1.254"]</script>
+  </section><section class="card common-question" id="cq35">
+  <span class="pill">Common Exercise 35 / 46</span><h2>/27 subnet-এ 192.168.9.64 কোন subnet boundary? Broadcast address কত?</h2>
+  <label for="answer35">তোমার উত্তর</label><textarea id="answer35" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="35" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="35" type="button">সমাধান দেখো</button><span class="feedback" id="feedback35" aria-live="polite"></span></div>
+  <details id="solution35" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>Network address 192.168.9.64; broadcast 192.168.9.95</p></details>
+  <script type="application/json" class="answer-key" id="key35">["192.168.9.64", "192.168.9.95"]</script>
+  </section><section class="card common-question" id="cq36">
+  <span class="pill">Common Exercise 36 / 46</span><h2>192.168.8.0/24-এর মধ্যে 192.168.8.96/27-এর usable host range নির্ণয় করো।</h2>
+  <label for="answer36">তোমার উত্তর</label><textarea id="answer36" class="common-answer" rows="3" placeholder="এখানে উত্তর লিখো..."></textarea>
+  <div class="actions"><button class="btn check-answer" data-id="36" type="button">উত্তর মিলিয়ে দেখো</button><button class="btn reveal-answer" data-id="36" type="button">সমাধান দেখো</button><span class="feedback" id="feedback36" aria-live="polite"></span></div>
+  <details id="solution36" class="answer"><summary>সমাধান ও ব্যাখ্যা</summary><p>192.168.8.97–192.168.8.126; broadcast 192.168.8.127</p></details>
+  <script type="application/json" class="answer-key" id="key36">["192.168.8.97", "192.168.8.126", "192.168.8.127"]</script>
+  </section><script>
+function norm(s){return (s||"").toLowerCase().replace(/\s+/g,"").replace(/[–—−]/g,"-").replace(/[，,;|]/g," ").replace(/0x/g,"");}
+document.querySelectorAll(".check-answer").forEach(b=>b.addEventListener("click",()=>{
+ const id=b.dataset.id, input=document.getElementById("answer"+id), fb=document.getElementById("feedback"+id);
+ if(!input.value.trim()){fb.textContent="আগে উত্তর লিখো।";fb.style.color="#ffbd69";return;}
+ const keys=JSON.parse(document.getElementById("key"+id).textContent);
+ const user=norm(input.value);
+ const matched=keys.filter(k=>user.includes(norm(k)));
+ if(matched.length===keys.length){fb.textContent="✓ উত্তর সঠিক — সব প্রয়োজনীয় মান মিলেছে।";fb.style.color="#a5ed8d";}
+ else if(matched.length>0){fb.textContent="△ আংশিক সঠিক — "+matched.length+"/"+keys.length+"টি মূল মান মিলেছে। সমাধান দেখে বাকি অংশ ঠিক করো।";fb.style.color="#ffbd69";}
+ else {fb.textContent="✗ মূল উত্তরগুলোর সঙ্গে মিল পাওয়া যায়নি। আবার চেষ্টা করো।";fb.style.color="#f38ca8";}
+}));
+document.querySelectorAll(".reveal-answer").forEach(b=>b.addEventListener("click",()=>{const d=document.getElementById("solution"+b.dataset.id);d.open=!d.open;if(d.open)d.scrollIntoView({behavior:"smooth",block:"nearest"});}));
+</script></div></body></html>
