@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>সূত্র | NetLab বাংলা</title><link href="style.css" rel="stylesheet"/>
+<style>
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.toc a{background:#1a2942;border:1px solid #304361;color:var(--text);padding:6px 11px;border-radius:999px;text-decoration:none;font-size:.85rem}
+.toc a:hover{border-color:var(--cyan)}
+.search{margin:16px 0 0}
+.f{background:#0b1424;border:1px solid #293c58;border-left:4px solid var(--cyan);border-radius:12px;padding:12px 14px;margin:12px 0}
+.f h3{margin:0 0 6px;font-size:1.02rem;color:var(--lime)}
+.f .eq{font-family:ui-monospace,monospace;font-size:1.02rem;color:#c6f2ff;margin:4px 0;overflow-x:auto}
+.f p{margin:4px 0;color:var(--muted);font-size:.92rem}
+.f.o{border-left-color:var(--orange)}.f.p{border-left-color:var(--pink)}
+.ex{color:var(--orange)}
+section.card{scroll-margin-top:12px}
+.hide{display:none}
+sup{font-size:.72em;line-height:0;vertical-align:super}
+</style></head><body><div class="wrap"><div class="top"><a class="brand" href="index.html" style="color:inherit;text-decoration:none">NetLab <span>বাংলা</span></a><nav>
+<a href="index.html">হোম</a><a href="ip-classes.html">IP Classes A–E</a><a href="theory.html">থিওরি</a><a href="ipv6-mac.html">IPv6 + MAC</a><a href="exercises.html">Exercises</a><a href="practice.html">Practice</a><a href="test.html">Test</a><a href="formula.html">সূত্র</a><a href="calculator.html">Subnet Calculator</a>
+</nav></div>
+
+<section class="hero"><span class="pill">Formula Sheet</span><h1>সব সূত্র <span style="color:var(--cyan)">এক জায়গায়</span></h1>
+<p class="muted">n = prefix length (CIDR), h = host bits = 32 − n। প্রতিটি সূত্রের নিচে ছোট উদাহরণ আছে।</p>
+<div class="toc"><a href="#basic">মৌলিক</a><a href="#mask">Mask</a><a href="#block">Block / Host</a><a href="#subnet">Subnetting</a><a href="#vlsm">VLSM</a><a href="#super">Supernetting</a><a href="#class">Class</a><a href="#v6">IPv6</a><a href="#mac">MAC</a><a href="#steps">ধাপ</a></div>
+<input class="search" id="q" type="search" placeholder="সূত্র খোঁজো (যেমন: broadcast, hosts, wildcard)…" aria-label="সূত্র খোঁজো"/></section>
+
+<section class="card" id="basic"><h2>১. মৌলিক</h2>
+<div class="f"><h3>Binary bit-এর মান (এক octet)</h3><div class="eq">128 · 64 · 32 · 16 · 8 · 4 · 2 · 1</div><p>Decimal → binary: বড় মান থেকে বিয়োগ করে যাও। <span class="ex">উদা: 77 = 64+8+4+1 = 01001101</span></p></div>
+<div class="f"><h3>IPv4 ও IPv6 আকার</h3><div class="eq">IPv4 = 32 bit = 4 octet ·  IPv6 = 128 bit = 8 group × 16 bit</div><p>মোট IPv4 address = 2³² = 4,294,967,296</p></div>
+<div class="f"><h3>Prefix ও mask-এর সম্পর্ক</h3><div class="eq">/n  ⇒  প্রথম n bit = 1 (network), বাকি 32−n bit = 0 (host)</div></div></section>
+
+<section class="card" id="mask"><h2>২. Subnet Mask</h2>
+<div class="f"><h3>Mask octet-এর সম্ভাব্য মান</h3>
+<table class="native-table"><thead><tr><th>1-এর সংখ্যা</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr></thead><tbody><tr><td>মান</td><td>128</td><td>192</td><td>224</td><td>240</td><td>248</td><td>252</td><td>254</td><td>255</td></tr></tbody></table></div>
+<div class="f"><h3>CIDR → Mask</h3><div class="eq">n = 8·k + r  ⇒  প্রথম k octet = 255, পরের octet = উপরের টেবিলের r-তম মান, বাকি = 0</div><p class="ex">উদা: /26 → 26 = 8·3 + 2 → 255.255.255.192</p></div>
+<div class="f"><h3>Mask → CIDR</h3><div class="eq">n = mask-এ মোট 1-এর সংখ্যা</div><p class="ex">উদা: 255.255.240.0 → 8+8+4 = /20</p></div>
+<div class="f o"><h3>Wildcard mask</h3><div class="eq">Wildcard = 255.255.255.255 − Mask</div><p class="ex">উদা: Mask 255.255.255.192 → Wildcard 0.0.0.63</p></div></section>
+
+<section class="card" id="block"><h2>৩. Block ও Host সংখ্যা</h2>
+<div class="f"><h3>Block-এর মোট address</h3><div class="eq">Total = 2<sup>h</sup> = 2<sup>32−n</sup></div><p class="ex">উদা: /26 → 2⁶ = 64</p></div>
+<div class="f"><h3>ব্যবহারযোগ্য Host</h3><div class="eq">Usable hosts = 2<sup>h</sup> − 2</div><p>(−2 = network address + broadcast address)। <span class="ex">উদা: /26 → 64 − 2 = 62</span></p></div>
+<div class="f"><h3>Block size (interesting octet)</h3><div class="eq">Block size = 256 − (interesting octet-এর mask মান)</div><p class="ex">উদা: mask 255.255.255.192 → 256 − 192 = 64</p></div>
+<div class="f"><h3>প্রয়োজনীয় Host bit</h3><div class="eq">ন্যূনতম h যাতে 2<sup>h</sup> − 2 ≥ H (দরকারি host)  ⇒  n = 32 − h</div><p class="ex">উদা: 100 host → h = 7 (126 ≥ 100) → /25</p></div>
+<div class="f"><h3>Network address</h3><div class="eq">Network = IP AND Mask</div></div>
+<div class="f"><h3>Broadcast address</h3><div class="eq">Broadcast = Network OR Wildcard = Network + 2<sup>h</sup> − 1</div></div>
+<div class="f"><h3>Host range</h3><div class="eq">First host = Network + 1 · Last host = Broadcast − 1</div></div>
+<div class="f p"><h3>উদাহরণ: 192.168.10.77/26</h3><p>Block = 64 → network = 192.168.10.64 → broadcast = 192.168.10.127 → host range = .65 থেকে .126 → usable = 62</p></div></section>
+
+<section class="card" id="subnet"><h2>৪. Subnetting (fixed length)</h2>
+<div class="f"><h3>Borrowed bit (s)</h3><div class="eq">s = নতুন prefix − পুরনো prefix</div></div>
+<div class="f"><h3>Subnet সংখ্যা</h3><div class="eq">Subnets = 2<sup>s</sup></div><p class="ex">উদা: /24 থেকে /27 → s = 3 → 8 subnet</p></div>
+<div class="f"><h3>প্রতি subnet-এ host</h3><div class="eq">Hosts/subnet = 2<sup>32−নতুন n</sup> − 2</div><p class="ex">উদা: /27 → 30 host</p></div>
+<div class="f"><h3>কয়টা subnet লাগলে কত bit ধার করবে</h3><div class="eq">ন্যূনতম s যাতে 2<sup>s</sup> ≥ দরকারি subnet সংখ্যা</div></div>
+<div class="f"><h3>Subnet-গুলোর শুরু</h3><div class="eq">k-তম subnet-এর network = Base + k × Block size (k = 0, 1, 2…)</div></div></section>
+
+<section class="card" id="vlsm"><h2>৫. VLSM</h2>
+<div class="f"><h3>নিয়ম</h3><div class="eq">১) বড় host চাহিদা আগে সাজাও  ২) প্রতিটির জন্য h বের করো  ৩) বড় block আগে বসাও, পরেরটা আগেরটার broadcast + 1 থেকে</div></div>
+<div class="f"><h3>Next network</h3><div class="eq">Next network = আগের Broadcast + 1 = আগের Network + 2<sup>h</sup></div></div>
+<div class="f"><h3>Point-to-point link</h3><div class="eq">2 host দরকার ⇒ h = 2 ⇒ /30</div></div>
+<div class="f"><h3>Alignment শর্ত</h3><div class="eq">Network address অবশ্যই block size-এর গুণিতক হতে হবে</div></div></section>
+
+<section class="card" id="super"><h2>৬. Supernetting / Route Aggregation</h2>
+<div class="f"><h3>নতুন prefix</h3><div class="eq">New n = n − log₂(k)   (k = একত্র করা network সংখ্যা)</div><p class="ex">উদা: 4টি /24 → /22</p></div>
+<div class="f"><h3>একত্র করার শর্ত</h3><div class="eq">k = 2-এর power · network গুলো পরপর (contiguous) · প্রথম network supernet block-এ aligned</div></div>
+<div class="f"><h3>Common prefix পদ্ধতি</h3><div class="eq">সব address binary করো → বাঁ দিক থেকে যতগুলো bit সবার এক, সেটাই new n</div></div></section>
+
+<section class="card" id="class"><h2>৭. IP Class ও বিশেষ range</h2>
+<table class="native-table"><thead><tr><th>Class</th><th>প্রথম octet</th><th>প্রথম bit</th><th>Default mask</th><th>Network × Host</th></tr></thead><tbody>
+<tr><td>A</td><td>1 – 126</td><td>0</td><td>/8 (255.0.0.0)</td><td>2⁷−2 × (2²⁴−2)</td></tr>
+<tr><td>B</td><td>128 – 191</td><td>10</td><td>/16 (255.255.0.0)</td><td>2¹⁴ × (2¹⁶−2)</td></tr>
+<tr><td>C</td><td>192 – 223</td><td>110</td><td>/24 (255.255.255.0)</td><td>2²¹ × (2⁸−2)</td></tr>
+<tr><td>D</td><td>224 – 239</td><td>1110</td><td>Multicast</td><td>—</td></tr>
+<tr><td>E</td><td>240 – 255</td><td>1111</td><td>Reserved</td><td>—</td></tr></tbody></table>
+<div class="f o"><h3>Private range (RFC 1918)</h3><div class="eq">10.0.0.0/8 · 172.16.0.0/12 (172.16–172.31) · 192.168.0.0/16</div></div>
+<div class="f o"><h3>বিশেষ address</h3><div class="eq">127.0.0.0/8 Loopback · 169.254.0.0/16 APIPA · 0.0.0.0 Default/Unspecified · 255.255.255.255 Limited broadcast</div></div></section>
+
+<section class="card" id="v6"><h2>৮. IPv6</h2>
+<div class="f"><h3>গঠন</h3><div class="eq">128 bit = 8 group × 16 bit (প্রতি group 4 hex digit)</div></div>
+<div class="f"><h3>সংক্ষেপ করার নিয়ম</h3><div class="eq">১) group-এর শুরুর 0 বাদ দাও  ২) পরপর all-zero group একবারই :: দিয়ে বদলাও</div><p class="ex">উদা: 2001:0db8:0000:0000:0000:0000:0000:0001 → 2001:db8::1</p></div>
+<div class="f"><h3>Subnet সংখ্যা</h3><div class="eq">/n prefix থেকে /64 subnet = 2<sup>64 − n</sup></div><p class="ex">উদা: /48 → 2¹⁶ = 65,536 টি /64</p></div>
+<div class="f"><h3>Address সংখ্যা</h3><div class="eq">/n block-এ মোট address = 2<sup>128 − n</sup></div></div>
+<div class="f"><h3>গুরুত্বপূর্ণ prefix</h3><div class="eq">::1/128 Loopback · fe80::/10 Link-local · fc00::/7 Unique local · 2000::/3 Global unicast · ff00::/8 Multicast</div></div></section>
+
+<section class="card" id="mac"><h2>৯. MAC Address ও EUI-64</h2>
+<div class="f"><h3>গঠন</h3><div class="eq">MAC = 48 bit = OUI (24 bit) + NIC-specific (24 bit)</div></div>
+<div class="f p"><h3>MAC → EUI-64 (Interface ID)</h3><div class="eq">১) MAC-কে মাঝখানে ভাগ করো (24 + 24)  ২) মাঝে FFFE বসাও  ৩) প্রথম byte-এর ৭ম bit (U/L) উল্টে দাও</div><p class="ex">উদা: 00:1A:2B:3C:4D:5E → 021A:2BFF:FE3C:4D5E (00 → 02) → Link-local: fe80::21a:2bff:fe3c:4d5e</p></div>
+<div class="f"><h3>Unicast / Multicast</h3><div class="eq">প্রথম byte-এর সর্বনিম্ন bit: 0 = Unicast, 1 = Multicast; ff:ff:ff:ff:ff:ff = Broadcast</div></div></section>
+
+<section class="card" id="steps"><h2>১০. দ্রুত সমাধানের ধাপ</h2>
+<div class="f"><h3>Network / Broadcast / Host বের করা</h3><div class="eq">n থেকে mask → interesting octet খুঁজে block size → IP-এর মান ছাড়িয়ে না যাওয়া সবচেয়ে বড় গুণিতক = network → +block−1 = broadcast</div></div>
+<div class="f"><h3>দুটি IP একই network-এ কি না</h3><div class="eq">IP₁ AND Mask = IP₂ AND Mask  ⇒  একই network</div></div>
+<div class="f"><h3>Valid host address কি না</h3><div class="eq">Host ≠ Network address এবং Host ≠ Broadcast address</div></div></section>
+
+<footer>উৎস: Fulvio Risso, <em>Exercises on IP Addressing</em> (2017), Created by Al Nahian Mugdho</footer></div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();
+document.querySelectorAll('.f').forEach(e=>e.classList.toggle('hide',t&&!e.textContent.toLowerCase().includes(t)));
+document.querySelectorAll('section.card').forEach(s=>s.classList.toggle('hide',t&&!s.querySelector('.f:not(.hide)')))});
+</script></body></html>
